@@ -6,13 +6,14 @@ public class SecretChat {
 
         StringBuilder message = new StringBuilder(scanner.nextLine());
 
-        String[] instructions = scanner.next().split(":\\|:");
+        String[] instructions = scanner.nextLine().split(":\\|:");
         while (!instructions[0].equals("Reveal")){
             String command = instructions[0];
             switch (command){
                 case "InsertSpace":
                     int index = Integer.parseInt(instructions[1]);
                     message.insert(index, " ");
+                    System.out.println(message);
                     break;
                 case "Reverse":
                     String substr = instructions[1];
@@ -28,6 +29,7 @@ public class SecretChat {
                         }
                         message.delete(startIndex, endIndex);
                         message.append(reversed);
+                        System.out.println(message);
                     }
                     break;
                 case "ChangeAll":
@@ -38,11 +40,12 @@ public class SecretChat {
                         message.replace(index, index + substr.length(), replacement);
                         index = message.indexOf(substr);
                     }
+                    System.out.println(message);
                     break;
 
             }
-            System.out.println(message);
-            instructions = scanner.next().split(":\\|:");
+//            System.out.println(message);
+            instructions = scanner.nextLine().split(":\\|:");
         }
         System.out.printf("You have a new text message: %s%n", message);
     }
