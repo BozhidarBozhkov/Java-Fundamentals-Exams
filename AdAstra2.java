@@ -57,5 +57,4 @@ public class AdAstra2 {
         itemList.forEach(System.out::println);
 
     }
-
 }
