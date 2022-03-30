@@ -32,5 +32,4 @@ public class AdAstra {
         items.forEach(System.out::print);
 
     }
-
 }
