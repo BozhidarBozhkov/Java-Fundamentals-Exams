@@ -8,7 +8,7 @@ public class FancyBarcodes {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Pattern pattern = Pattern.compile("@#+(?<product>[A-Za-z0-9]{5,}[A-Z])@#+");
+        Pattern pattern = Pattern.compile("^@#+(?<product>[A-Z][A-Za-z0-9]{4,}[A-Z])@#+$");
         List<String> products = new ArrayList<>();
         StringBuilder productGroup = new StringBuilder();
         int n = Integer.parseInt(scanner.nextLine());
@@ -28,7 +28,6 @@ public class FancyBarcodes {
                             productGroup.append(digit);
                         }
                     }
-
                 }
                 if (productGroup.length() == 0){
                     System.out.println("Product group: 00");
