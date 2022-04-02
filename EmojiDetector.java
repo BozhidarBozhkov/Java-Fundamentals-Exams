@@ -8,7 +8,8 @@ public class EmojiDetector {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String regex = "([:]{2}|[**]{2})(?<emoji>[A-Z][a-z]{2,})\\1";
+       // String regex = "([:]{2}|[**]{2})(?<emoji>[A-Z][a-z]{2,})\\1";
+        String regex = "([*]{2})([A-Z][a-z]{2,})\\1|([:]{2})([A-Z][a-z]{2,})\\3";
 
         String line = scanner.nextLine();
         long coolTreshold = 1;
@@ -22,23 +23,21 @@ public class EmojiDetector {
         Matcher matcher = pattern.matcher(line);
         List<String> emojies = new ArrayList<>();
         while (matcher.find()){
-            String emoji = matcher.group("emoji");
+            String emoji = matcher.group();
             emojies.add(emoji);
         }
-        StringBuilder coolEmoji = new StringBuilder();
+        List<String> coolEmoji = new ArrayList<>();
         for (String emoji : emojies) {
             int coolness = 0;
             for (int i = 0; i < emoji.length(); i++) {
                 coolness += emoji.charAt(i);
             }
             if (coolness > coolTreshold){
-                coolEmoji.append(emoji);
+                coolEmoji.add(emoji);
             }
         }
         System.out.println("Cool threshold: " + coolTreshold);
         System.out.println(emojies.size() + " emojis found in the text. The cool ones are:");
-        emojies.forEach(System.out::println);
-
+        coolEmoji.forEach(System.out::println);
     }
-
 }
