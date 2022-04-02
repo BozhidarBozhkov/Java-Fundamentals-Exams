@@ -8,7 +8,7 @@ public class EmojiDetector {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-       // String regex = "([:]{2}|[**]{2})(?<emoji>[A-Z][a-z]{2,})\\1";
+      // String regex = "([:]{2}|[*]{2})(?<emoji>[A-Z][a-z]{2,})\\1";
         String regex = "([*]{2})([A-Z][a-z]{2,})\\1|([:]{2})([A-Z][a-z]{2,})\\3";
 
         String line = scanner.nextLine();
@@ -29,7 +29,7 @@ public class EmojiDetector {
         List<String> coolEmoji = new ArrayList<>();
         for (String emoji : emojies) {
             int coolness = 0;
-            for (int i = 0; i < emoji.length(); i++) {
+            for (int i = 2; i < emoji.length() - 2; i++) {
                 coolness += emoji.charAt(i);
             }
             if (coolness > coolTreshold){
