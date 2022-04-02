@@ -37,9 +37,7 @@ public class EmojiDetector {
         }
         System.out.println("Cool threshold: " + coolTreshold);
         System.out.println(emojies.size() + " emojis found in the text. The cool ones are:");
-        for (String s: emojies) {
-            System.out.println(s);
-        }
+        emojies.forEach(System.out::println);
 
     }
 
